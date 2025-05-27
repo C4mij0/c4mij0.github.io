@@ -1,15 +1,1083 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inicio</title>
-    <h1>Bienvenido a mi página WEB</h1>
-    <p>En ésta página aprenderan todo sobre comida callejera</p>
-    <img src="https://imgur.com/8GETY2g" />
+    <title>Formulario de Hoja de Vida</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        h1, h2 {
+            color: #2c3e50;
+        }
+        .form-section {
+            background: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input[type="text"],
+        input[type="number"],
+        input[type="date"],
+        input[type="email"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        .form-row {
+            display: flex;
+            gap: 15px;
+        }
+        .form-col {
+            flex: 1;
+        }
+        button {
+            background: #3498db;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background: #2980b9;
+        }
+        .tab-container {
+            margin-bottom: 20px;
+        }
+        .tab-buttons {
+            display: flex;
+            margin-bottom: 10px;
+        }
+        .tab-button {
+            padding: 10px 20px;
+            background: #eee;
+            border: none;
+            cursor: pointer;
+            margin-right: 5px;
+        }
+        .tab-button.active {
+            background: #3498db;
+            color: white;
+        }
+        .tab-content {
+            display: none;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        .file-upload {
+            margin-bottom: 15px;
+        }
+        .file-upload-preview {
+            max-width: 150px;
+            max-height: 150px;
+            margin-top: 10px;
+            display: none;
+        }
+    </style>
 </head>
 <body>
-    
+    <div class="container">
+        <h1>Formulario de Hoja de Vida</h1>
+        
+        <div class="tab-container">
+            <div class="tab-buttons">
+                <button class="tab-button active" data-tab="datos-personales">Datos Personales</button>
+                <button class="tab-button" data-tab="ubicacion">Ubicación</button>
+                <button class="tab-button" data-tab="laboral">Datos Laborales</button>
+                <button class="tab-button" data-tab="financieros">Datos Financieros</button>
+                <button class="tab-button" data-tab="sarlaft">SARLAFT</button>
+                <button class="tab-button" data-tab="referencias">Referencias</button>
+                <button class="tab-button" data-tab="permisos">Permisos</button>
+            </div>
+            
+            <form id="hojaVidaForm">
+                <!-- Datos Personales -->
+                <div id="datos-personales" class="tab-content active">
+                    <div class="form-section">
+                        <h2>Documento de Identidad</h2>
+                        <div class="form-row">
+                            <div class="form-col">
+                                <div class="form-group">
+                                    <label for="tipo_documento">Tipo de Documento*</label>
+                                    <select id="tipo_documento" name="tipo_documento" required>
+                                        <option value="">Seleccione...</option>
+                                        <!-- Opciones cargadas dinámicamente -->
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-col">
+                                <div class="form-group">
+                                    <label for="documento">Número de Documento*</label>
+                                    <input type="text" id="documento" name="documento" required>
+                                </div>
+                            </div>
+                            <div class="form-col">
+                                <div class="form-group">
+                                    <label for="digito_verificacion">Dígito de Verificación</label>
+                                    <input type="text" id="digito_verificacion" name="digito_verificacion" maxlength="2">
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-col">
+                                <div class="form-group">
+                                    <label for="fecha_documento">Fecha de Expedición</label>
+                                    <input type="date" id="fecha_documento" name="fecha_documento">
+                                </div>
+                            </div>
+                            <div class="form-col">
+                                <div class="form-group">
+                                    <label for="departamento_expedicion">Departamento de Expedición</label>
+                                    <select id="departamento_expedicion" name="departamento_expedicion">
+                                        <option value="">Seleccione...</option>
+                                        <!-- Opciones cargadas dinámicamente -->
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-col">
+                                <div class="form-group">
+                                    <label for="ciudad_expedicion">Ciudad de Expedición</label>
+                                    <select id="ciudad_expedicion" name="ciudad_expedicion">
+                                        <option value="">Seleccione...</option>
+                                        <!-- Opciones cargadas dinámicamente -->
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="nacionalidad_documento">Nacionalidad</label>
+                            <select id="nacionalidad_documento" name="nacionalidad_documento">
+                                <option value="">Seleccione...</option>
+                                <!-- Opciones cargadas dinámicamente -->
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-section">
+                        <h2>Información Personal</h2>
+                        <div class="form-row">
+                            <div class="form-col">
+                                <div class="form-group">
+                                    <label for="nombres">Nombres*</label>
+                                    <input type="text" id="nombres" name="nombres" required>
+                                </div>
+                            </div>
+                            <div class="form-col">
+                                <div class="form-group">
+                                    <label for="primer_apellido">Primer Apellido*</label>
+                                    <input type="text" id="primer_apellido" name="primer_apellido" required>
+                                </div>
+                            </div>
+                            <div class="form-col">
+                                <div class="form-group">
+                                    <label for="segundo_apellido">Segundo Apellido</label>
+                                    <input type="text" id="segundo_apellido" name="segundo_apellido">
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-col">
+                                <div class="form-group">
+                                    <label for="fecha_nacimiento">Fecha de Nacimiento*</label>
+                                    <input type="date" id="fecha_nacimiento" name="fecha_nacimiento" required>
+                                </div>
+                            </div>
+                            <div class="form-col">
+                                <div class="form-group">
+                                    <label for="genero">Género*</label>
+                                    <select id="genero" name="genero" required>
+                                        <option value="">Seleccione...</option>
+                                        <!-- Opciones cargadas dinámicamente -->
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-col">
+                                <div class="form-group">
+                                    <label for="pais_nacimiento">País de Nacimiento</label>
+                                    <select id="pais_nacimiento" name="pais_nacimiento">
+                                        <option value="">Seleccione...</option>
+                                        <!-- Opciones cargadas dinámicamente -->
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-col">
+                                <div class="form-group">
+                                    <label for="departamento_nacimiento">Departamento de Nacimiento</label>
+                                    <select id="departamento_nacimiento" name="departamento_nacimiento">
+                                        <option value="">Seleccione...</option>
+                                        <!-- Opciones cargadas dinámicamente -->
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-col">
+                                <div class="form-group">
+                                    <label for="ciudad_nacimiento">Ciudad de Nacimiento</label>
+                                    <select id="ciudad_nacimiento" name="ciudad_nacimiento">
+                                        <option value="">Seleccione...</option>
+                                        <!-- Opciones cargadas dinámicamente -->
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-section">
+                        <h2>Información Socioeconómica</h2>
+                        <div class="form-row">
+                            <div class="form-col">
+                                <div class="form-group">
+                                    <label for="estado_civil">Estado Civil*</label>
+                                    <select id="estado_civil" name="estado_civil" required>
+                                        <option value="">Seleccione...</option>
+                                        <!-- Opciones cargadas dinámicamente -->
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-col">
+                                <div class="form-group">
+                                    <label for="nivel_escolaridad">Nivel de Escolaridad</label>
+                                    <select id="nivel_escolaridad" name="nivel_escolaridad">
+                                        <option value="">Seleccione...</option>
+                                        <!-- Opciones cargadas dinámicamente -->
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-col">
+                                <div class="form-group">
+                                    <label for="cabeza_familia">Cabeza de Familia</label>
+                                    <select id="cabeza_familia" name="cabeza_familia">
+                                        <option value="">Seleccione...</option>
+                                        <option value="S">Sí</option>
+                                        <option value="N">No</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-col">
+                                <div class="form-group">
+                                    <label for="estrato">Estrato</label>
+                                    <select id="estrato" name="estrato">
+                                        <option value="">Seleccione...</option>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                        <option value="6">6</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-col">
+                                <div class="form-group">
+                                    <label for="numero_hijos">Número de Hijos</label>
+                                    <input type="number" id="numero_hijos" name="numero_hijos" min="0">
+                                </div>
+                            </div>
+                            <div class="form-col">
+                                <div class="form-group">
+                                    <label for="ocupacion">Ocupación</label>
+                                    <select id="ocupacion" name="ocupacion">
+                                        <option value="">Seleccione...</option>
+                                        <!-- Opciones cargadas dinámicamente -->
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-col">
+                                <div class="form-group">
+                                    <label for="segmento">Segmento</label>
+                                    <select id="segmento" name="segmento">
+                                        <option value="">Seleccione...</option>
+                                        <!-- Opciones cargadas dinámicamente -->
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-col">
+                                <div class="form-group">
+                                    <label for="codigo_tipo_hoja_vida">Tipo de Hoja de Vida</label>
+                                    <select id="codigo_tipo_hoja_vida" name="codigo_tipo_hoja_vida">
+                                        <option value="">Seleccione...</option>
+                                        <!-- Opciones cargadas dinámicamente -->
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-section">
+                        <h2>Archivos</h2>
+                        <div class="form-row">
+                            <div class="form-col">
+                                <div class="form-group file-upload">
+                                    <label for="foto">Foto</label>
+                                    <input type="file" id="foto" name="foto" accept="image/*">
+                                    <img id="foto-preview" class="file-upload-preview">
+                                </div>
+                            </div>
+                            <div class="form-col">
+                                <div class="form-group file-upload">
+                                    <label for="firmar_uno">Firma 1</label>
+                                    <input type="file" id="firmar_uno" name="firmar_uno" accept="image/*">
+                                    <img id="firma1-preview" class="file-upload-preview">
+                                </div>
+                            </div>
+                            <div class="form-col">
+                                <div class="form-group file-upload">
+                                    <label for="firma_dos">Firma 2</label>
+                                    <input type="file" id="firma_dos" name="firma_dos" accept="image/*">
+                                    <img id="firma2-preview" class="file-upload-preview">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Ubicación -->
+                <div id="ubicacion" class="tab-content">
+                    <div class="form-section">
+                        <h2>Información de Contacto</h2>
+                        <div class="form-row">
+                            <div class="form-col">
+                                <div class="form-group">
+                                    <label for="telefono">Teléfono Fijo</label>
+                                    <input type="text" id="telefono" name="telefono" maxlength="7">
+                                </div>
+                            </div>
+                            <div class="form-col">
+                                <div class="form-group">
+                                    <label for="celular_uno">Celular Principal*</label>
+                                    <input type="text" id="celular_uno" name="celular_uno" maxlength="10" required>
+                                </div>
+                            </div>
+                            <div class="form-col">
+                                <div class="form-group">
+                                    <label for="celular_dos">Celular Secundario</label>
+                                    <input type="text" id="celular_dos" name="celular_dos" maxlength="10">
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="correo">Correo Electrónico</label>
+                            <input type="email" id="correo" name="correo">
+                        </div>
+                    </div>
+                    
+                    <div class="form-section">
+                        <h2>Dirección</h2>
+                        <div class="form-row">
+                            <div class="form-col">
+                                <div class="form-group">
+                                    <label for="pais">País</label>
+                                    <select id="pais" name="pais">
+                                        <option value="">Seleccione...</option>
+                                        <!-- Opciones cargadas dinámicamente -->
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-col">
+                                <div class="form-group">
+                                    <label for="departamento">Departamento</label>
+                                    <select id="departamento" name="departamento">
+                                        <option value="">Seleccione...</option>
+                                        <!-- Opciones cargadas dinámicamente -->
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-col">
+                                <div class="form-group">
+                                    <label for="codigo_ciudad">Ciudad</label>
+                                    <select id="codigo_ciudad" name="codigo_ciudad">
+                                        <option value="">Seleccione...</option>
+                                        <!-- Opciones cargadas dinámicamente -->
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="direccion">Dirección</label>
+                            <input type="text" id="direccion" name="direccion">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="barrio">Barrio</label>
+                            <input type="text" id="barrio" name="barrio">
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-col">
+                                <div class="form-group">
+                                    <label for="zona_ubicacion">Zona</label>
+                                    <select id="zona_ubicacion" name="zona_ubicacion">
+                                        <option value="">Seleccione...</option>
+                                        <!-- Opciones cargadas dinámicamente -->
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-col">
+                                <div class="form-group">
+                                    <label for="sub_zona_ubicacion">Sub Zona</label>
+                                    <select id="sub_zona_ubicacion" name="sub_zona_ubicacion">
+                                        <option value="">Seleccione...</option>
+                                        <!-- Opciones cargadas dinámicamente -->
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Datos Laborales -->
+                <div id="laboral" class="tab-content">
+                    <div class="form-section">
+                        <h2>Información Laboral</h2>
+                        <div class="form-group">
+                            <label for="empresa">Empresa</label>
+                            <input type="text" id="empresa" name="empresa">
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-col">
+                                <div class="form-group">
+                                    <label for="tipo_empresa">Tipo de Empresa</label>
+                                    <select id="tipo_empresa" name="tipo_empresa">
+                                        <option value="">Seleccione...</option>
+                                        <!-- Opciones cargadas dinámicamente -->
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-col">
+                                <div class="form-group">
+                                    <label for="codigo_interno_empresa">Código Interno Empresa</label>
+                                    <input type="text" id="codigo_interno_empresa" name="codigo_interno_empresa">
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-col">
+                                <div class="form-group">
+                                    <label for="departamento_laboral">Departamento</label>
+                                    <select id="departamento_laboral" name="departamento_laboral">
+                                        <option value="">Seleccione...</option>
+                                        <!-- Opciones cargadas dinámicamente -->
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-col">
+                                <div class="form-group">
+                                    <label for="ciudad_laboral">Ciudad</label>
+                                    <select id="ciudad_laboral" name="ciudad_laboral">
+                                        <option value="">Seleccione...</option>
+                                        <!-- Opciones cargadas dinámicamente -->
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="direccion_laboral">Dirección Empresa</label>
+                            <input type="text" id="direccion_laboral" name="direccion_laboral">
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-col">
+                                <div class="form-group">
+                                    <label for="telefono_laboral">Teléfono Empresa</label>
+                                    <input type="text" id="telefono_laboral" name="telefono_laboral" maxlength="7">
+                                </div>
+                            </div>
+                            <div class="form-col">
+                                <div class="form-group">
+                                    <label for="fecha_vinculacion">Fecha de Vinculación</label>
+                                    <input type="date" id="fecha_vinculacion" name="fecha_vinculacion">
+                                </div>
+                            </div>
+                            <div class="form-col">
+                                <div class="form-group">
+                                    <label for="tipo_contrato">Tipo de Contrato</label>
+                                    <select id="tipo_contrato" name="tipo_contrato">
+                                        <option value="">Seleccione...</option>
+                                        <!-- Opciones cargadas dinámicamente -->
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Datos Financieros -->
+                <div id="financieros" class="tab-content">
+                    <div class="form-section">
+                        <h2>Información Financiera</h2>
+                        <div class="form-row">
+                            <div class="form-col">
+                                <div class="form-group">
+                                    <label for="valor_salario">Valor Salario</label>
+                                    <input type="number" id="valor_salario" name="valor_salario" step="0.01">
+                                </div>
+                            </div>
+                            <div class="form-col">
+                                <div class="form-group">
+                                    <label for="otros_ingresos">Otros Ingresos</label>
+                                    <input type="number" id="otros_ingresos" name="otros_ingresos" step="0.01">
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-col">
+                                <div class="form-group">
+                                    <label for="total_egresos">Total Egresos</label>
+                                    <input type="number" id="total_egresos" name="total_egresos" step="0.01">
+                                </div>
+                            </div>
+                            <div class="form-col">
+                                <div class="form-group">
+                                    <label for="total_activos">Total Activos</label>
+                                    <input type="number" id="total_activos" name="total_activos" step="0.01">
+                                </div>
+                            </div>
+                            <div class="form-col">
+                                <div class="form-group">
+                                    <label for="total_pasivos">Total Pasivos</label>
+                                    <input type="number" id="total_pasivos" name="total_pasivos" step="0.01">
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="origen_fondos">Origen de Fondos</label>
+                            <input type="text" id="origen_fondos" name="origen_fondos">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="relacion_financiera">Relación Financiera</label>
+                            <input type="text" id="relacion_financiera" name="relacion_financiera">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="deuda_relacion_financiera">Deuda Relación Financiera</label>
+                            <input type="number" id="deuda_relacion_financiera" name="deuda_relacion_financiera" step="0.01">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="comentario_otros_ingresos">Comentario Otros Ingresos</label>
+                            <textarea id="comentario_otros_ingresos" name="comentario_otros_ingresos" rows="3"></textarea>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- SARLAFT -->
+                <div id="sarlaft" class="tab-content">
+                    <div class="form-section">
+                        <h2>Información SARLAFT</h2>
+                        <div class="form-row">
+                            <div class="form-col">
+                                <div class="form-group">
+                                    <label for="exoneracion_uiaf">Exoneración UIAF</label>
+                                    <select id="exoneracion_uiaf" name="exoneracion_uiaf">
+                                        <option value="">Seleccione...</option>
+                                        <option value="SI">Sí</option>
+                                        <option value="NO">No</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-col">
+                                <div class="form-group">
+                                    <label for="fecha_exoneracion">Fecha Exoneración</label>
+                                    <input type="date" id="fecha_exoneracion" name="fecha_exoneracion">
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-col">
+                                <div class="form-group">
+                                    <label for="asociado_peps">Asociado a PEPs</label>
+                                    <select id="asociado_peps" name="asociado_peps">
+                                        <option value="">Seleccione...</option>
+                                        <option value="SI">Sí</option>
+                                        <option value="NO">No</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-col">
+                                <div class="form-group">
+                                    <label for="tipo_peps">Tipo PEPs</label>
+                                    <select id="tipo_peps" name="tipo_peps">
+                                        <option value="">Seleccione...</option>
+                                        <!-- Opciones cargadas dinámicamente -->
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="observaciones_peps">Observaciones PEPs</label>
+                            <textarea id="observaciones_peps" name="observaciones_peps" rows="3"></textarea>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-col">
+                                <div class="form-group">
+                                    <label for="fecha_incial_peps">Fecha Inicial PEPs</label>
+                                    <input type="date" id="fecha_incial_peps" name="fecha_incial_peps">
+                                </div>
+                            </div>
+                            <div class="form-col">
+                                <div class="form-group">
+                                    <label for="fecha_final_peps">Fecha Final PEPs</label>
+                                    <input type="date" id="fecha_final_peps" name="fecha_final_peps">
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-col">
+                                <div class="form-group">
+                                    <label for="familia_peps">Familia PEPs</label>
+                                    <select id="familia_peps" name="familia_peps">
+                                        <option value="">Seleccione...</option>
+                                        <option value="SI">Sí</option>
+                                        <option value="NO">No</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-col">
+                                <div class="form-group">
+                                    <label for="tipo_familia_peps">Tipo Familia PEPs</label>
+                                    <select id="tipo_familia_peps" name="tipo_familia_peps">
+                                        <option value="">Seleccione...</option>
+                                        <!-- Opciones cargadas dinámicamente -->
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-col">
+                                <div class="form-group">
+                                    <label for="cedula_familia_peps">Cédula Familia PEPs</label>
+                                    <input type="text" id="cedula_familia_peps" name="cedula_familia_peps">
+                                </div>
+                            </div>
+                            <div class="form-col">
+                                <div class="form-group">
+                                    <label for="parentesco_peps">Parentesco PEPs</label>
+                                    <select id="parentesco_peps" name="parentesco_peps">
+                                        <option value="">Seleccione...</option>
+                                        <!-- Opciones cargadas dinámicamente -->
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="nombre_familia_peps">Nombre Familia PEPs</label>
+                            <input type="text" id="nombre_familia_peps" name="nombre_familia_peps">
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-col">
+                                <div class="form-group">
+                                    <label for="moneda_extranjera">Maneja Moneda Extranjera</label>
+                                    <select id="moneda_extranjera" name="moneda_extranjera">
+                                        <option value="">Seleccione...</option>
+                                        <option value="SI">Sí</option>
+                                        <option value="NO">No</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-col">
+                                <div class="form-group">
+                                    <label for="observacion_moneda_extranjera">Observación Moneda Extranjera</label>
+                                    <input type="text" id="observacion_moneda_extranjera" name="observacion_moneda_extranjera">
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-col">
+                                <div class="form-group">
+                                    <label for="cuenta_extranjero">Tiene Cuenta en el Extranjero</label>
+                                    <select id="cuenta_extranjero" name="cuenta_extranjero">
+                                        <option value="">Seleccione...</option>
+                                        <option value="SI">Sí</option>
+                                        <option value="NO">No</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-col">
+                                <div class="form-group">
+                                    <label for="tipo_moneda_extranjera">Tipo Moneda</label>
+                                    <input type="text" id="tipo_moneda_extranjera" name="tipo_moneda_extranjera">
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-col">
+                                <div class="form-group">
+                                    <label for="moneda_cuenta_extranjero">Moneda Cuenta Extranjero</label>
+                                    <input type="text" id="moneda_cuenta_extranjero" name="moneda_cuenta_extranjero">
+                                </div>
+                            </div>
+                            <div class="form-col">
+                                <div class="form-group">
+                                    <label for="numero_cuenta_extranjero">Número Cuenta Extranjero</label>
+                                    <input type="text" id="numero_cuenta_extranjero" name="numero_cuenta_extranjero">
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="nombre_banco_extranjero">Nombre Banco Extranjero</label>
+                            <input type="text" id="nombre_banco_extranjero" name="nombre_banco_extranjero">
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-col">
+                                <div class="form-group">
+                                    <label for="ciudad_cuenta_extranjero">Ciudad Cuenta Extranjero</label>
+                                    <input type="text" id="ciudad_cuenta_extranjero" name="ciudad_cuenta_extranjero">
+                                </div>
+                            </div>
+                            <div class="form-col">
+                                <div class="form-group">
+                                    <label for="pais_cuenta_extranjero">País Cuenta Extranjero</label>
+                                    <input type="text" id="pais_cuenta_extranjero" name="pais_cuenta_extranjero">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Referencias -->
+                <div id="referencias" class="tab-content">
+                    <div class="form-section">
+                        <h2>Referencia Estado Civil</h2>
+                        <div class="form-group">
+                            <label for="nombre_conyuge">Nombre Cónyuge</label>
+                            <input type="text" id="nombre_conyuge" name="nombre_conyuge">
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-col">
+                                <div class="form-group">
+                                    <label for="documento_conyuge">Documento Cónyuge</label>
+                                    <input type="text" id="documento_conyuge" name="documento_conyuge">
+                                </div>
+                            </div>
+                            <div class="form-col">
+                                <div class="form-group">
+                                    <label for="celular_conyuge">Celular Cónyuge</label>
+                                    <input type="text" id="celular_conyuge" name="celular_conyuge" maxlength="10">
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="ingresos_conyuge">Ingresos Cónyuge</label>
+                            <input type="number" id="ingresos_conyuge" name="ingresos_conyuge" step="0.01">
+                        </div>
+                    </div>
+                    
+                    <div class="form-section">
+                        <h2>Referencia Familiar</h2>
+                        <div class="form-group">
+                            <label for="nombre_referencia_familiar">Nombre Referencia Familiar</label>
+                            <input type="text" id="nombre_referencia_familiar" name="nombre_referencia_familiar">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="direccion_referencia_familiar">Dirección Referencia Familiar</label>
+                            <input type="text" id="direccion_referencia_familiar" name="direccion_referencia_familiar">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="telefono_referencia_familiar">Teléfono Referencia Familiar</label>
+                            <input type="text" id="telefono_referencia_familiar" name="telefono_referencia_familiar" maxlength="7">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="codigo_parentesco_referencia_familiar">Parentesco</label>
+                            <select id="codigo_parentesco_referencia_familiar" name="codigo_parentesco_referencia_familiar">
+                                <option value="">Seleccione...</option>
+                                <!-- Opciones cargadas dinámicamente -->
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-section">
+                        <h2>Referencia Personal</h2>
+                        <div class="form-group">
+                            <label for="nombre_referencia_personal">Nombre Referencia Personal</label>
+                            <input type="text" id="nombre_referencia_personal" name="nombre_referencia_personal">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="direccion_referencia_personal">Dirección Referencia Personal</label>
+                            <input type="text" id="direccion_referencia_personal" name="direccion_referencia_personal">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="telefono_referencia_personal">Teléfono Referencia Personal</label>
+                            <input type="text" id="telefono_referencia_personal" name="telefono_referencia_personal" maxlength="7">
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Permisos -->
+                <div id="permisos" class="tab-content">
+                    <div class="form-section">
+                        <h2>Permisos Especiales</h2>
+                        <div class="form-row">
+                            <div class="form-col">
+                                <div class="form-group">
+                                    <label for="recibe_llamadas">Recibe Llamadas</label>
+                                    <select id="recibe_llamadas" name="recibe_llamadas">
+                                        <option value="">Seleccione...</option>
+                                        <option value="SI">Sí</option>
+                                        <option value="NO">No</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-col">
+                                <div class="form-group">
+                                    <label for="recibe_msm">Recibe Mensajes</label>
+                                    <select id="recibe_msm" name="recibe_msm">
+                                        <option value="">Seleccione...</option>
+                                        <option value="SI">Sí</option>
+                                        <option value="NO">No</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-col">
+                                <div class="form-group">
+                                    <label for="recibe_emails">Recibe Emails</label>
+                                    <select id="recibe_emails" name="recibe_emails">
+                                        <option value="">Seleccione...</option>
+                                        <option value="SI">Sí</option>
+                                        <option value="NO">No</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-col">
+                                <div class="form-group">
+                                    <label for="recibe_cartas">Recibe Cartas</label>
+                                    <select id="recibe_cartas" name="recibe_cartas">
+                                        <option value="">Seleccione...</option>
+                                        <option value="SI">Sí</option>
+                                        <option value="NO">No</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="recibe_redes_sociales">Recibe Redes Sociales</label>
+                            <select id="recibe_redes_sociales" name="recibe_redes_sociales">
+                                <option value="">Seleccione...</option>
+                                <option value="SI">Sí</option>
+                                <option value="NO">No</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-section">
+                    <button type="submit">Guardar Hoja de Vida</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Manejo de pestañas
+            const tabButtons = document.querySelectorAll('.tab-button');
+            const tabContents = document.querySelectorAll('.tab-content');
+            
+            tabButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const tabId = button.getAttribute('data-tab');
+                    
+                    // Remover clase active de todos los botones y contenidos
+                    tabButtons.forEach(btn => btn.classList.remove('active'));
+                    tabContents.forEach(content => content.classList.remove('active'));
+                    
+                    // Agregar clase active al botón y contenido seleccionado
+                    button.classList.add('active');
+                    document.getElementById(tabId).classList.add('active');
+                });
+            });
+            
+            // Previsualización de imágenes
+            const fileInputs = {
+                'foto': 'foto-preview',
+                'firmar_uno': 'firma1-preview',
+                'firma_dos': 'firma2-preview'
+            };
+            
+            for (const [inputId, previewId] of Object.entries(fileInputs)) {
+                const input = document.getElementById(inputId);
+                const preview = document.getElementById(previewId);
+                
+                input.addEventListener('change', function() {
+                    const file = this.files[0];
+                    if (file) {
+                        const reader = new FileReader();
+                        reader.onload = function(e) {
+                            preview.src = e.target.result;
+                            preview.style.display = 'block';
+                        }
+                        reader.readAsDataURL(file);
+                    } else {
+                        preview.src = '';
+                        preview.style.display = 'none';
+                    }
+                });
+            }
+            
+            // Manejo del formulario
+            const form = document.getElementById('hojaVidaForm');
+            
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Validar formulario
+                if (validateForm()) {
+                    // Crear objeto con los datos del formulario
+                    const formData = new FormData(form);
+                    const data = {};
+                    
+                    formData.forEach((value, key) => {
+                        data[key] = value;
+                    });
+                    
+                    // Aquí puedes enviar los datos al servidor
+                    console.log('Datos del formulario:', data);
+                    alert('Formulario enviado correctamente');
+                    
+                    // Limpiar formulario después de enviar
+                    form.reset();
+                    document.querySelectorAll('.file-upload-preview').forEach(preview => {
+                        preview.src = '';
+                        preview.style.display = 'none';
+                    });
+                }
+            });
+            
+            function validateForm() {
+                let isValid = true;
+                const requiredFields = form.querySelectorAll('[required]');
+                
+                requiredFields.forEach(field => {
+                    if (!field.value.trim()) {
+                        isValid = false;
+                        field.style.borderColor = 'red';
+                    } else {
+                        field.style.borderColor = '#ddd';
+                    }
+                });
+                
+                if (!isValid) {
+                    alert('Por favor complete todos los campos requeridos');
+                }
+                
+                return isValid;
+            }
+            
+            // Aquí iría el código para cargar dinámicamente los selectores
+            // Ejemplo: cargarTiposDocumento();
+            
+            // Ejemplo de función para cargar datos en un select
+            /*
+            function cargarTiposDocumento() {
+                // Simulación de llamada a API
+                const tiposDocumento = [
+                    { tipo_documento: 'CC', nombre_tipo_documento: 'Cédula de Ciudadanía' },
+                    { tipo_documento: 'TI', nombre_tipo_documento: 'Tarjeta de Identidad' },
+                    { tipo_documento: 'CE', nombre_tipo_documento: 'Cédula de Extranjería' }
+                ];
+                
+                const select = document.getElementById('tipo_documento');
+                tiposDocumento.forEach(tipo => {
+                    const option = document.createElement('option');
+                    option.value = tipo.tipo_documento;
+                    option.textContent = tipo.nombre_tipo_documento;
+                    select.appendChild(option);
+                });
+            }
+            */
+            
+            // Manejo de dependencias entre selects (departamento -> ciudad)
+            /*
+            document.getElementById('departamento_expedicion').addEventListener('change', function() {
+                const codigoDepartamento = this.value;
+                const selectCiudad = document.getElementById('ciudad_expedicion');
+                
+                // Limpiar select de ciudades
+                selectCiudad.innerHTML = '<option value="">Seleccione...</option>';
+                
+                if (codigoDepartamento) {
+                    // Simular carga de ciudades por departamento
+                    const ciudades = [
+                        { codigo_ciudad: '05001', nombre_ciudad: 'Medellín' },
+                        { codigo_ciudad: '05002', nombre_ciudad: 'Bello' },
+                        { codigo_ciudad: '05003', nombre_ciudad: 'Envigado' }
+                    ];
+                    
+                    ciudades.forEach(ciudad => {
+                        const option = document.createElement('option');
+                        option.value = ciudad.codigo_ciudad;
+                        option.textContent = ciudad.nombre_ciudad;
+                        selectCiudad.appendChild(option);
+                    });
+                }
+            });
+            */
+        });
+    </script>
 </body>
 </html>
